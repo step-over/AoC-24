@@ -1,19 +1,17 @@
-map = []
-antinodes = []
+map , antinodes = [] , []
 n , m = 0 , 0
 
 def save_map():
-    global n, m, antinodes
+    global n, m
 
     file = open('input.txt', 'r')
 
     for line in file:
         map.append([cell for cell in line.strip()])
+        antinodes.append([cell for cell in line.strip()])
     
     n = len(map)
     m = len(map[0])
-
-    antinodes = map
     
     file.close()
     
