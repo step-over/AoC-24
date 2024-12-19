@@ -33,14 +33,14 @@ def mark_antinodes():
                     antinodes[ant2x][ant2y] = '#'
 
 def antennas_pos():
-    list = []
+    positions = []
 
     for x, row in enumerate(map):
         for y, cell in enumerate(row):
             if (cell != '.'):
-                list.append((x,y))
+                positions.append((x,y))
     
-    return list
+    return positions
 
 def in_range(x,y):
     return x in range(n) and y in range(m)
