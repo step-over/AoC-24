@@ -8,6 +8,8 @@ def save_stones():
 
     stones = line.split(' ')
 
+    file.close()
+
 def blink():
     global stones
     evolution = []
