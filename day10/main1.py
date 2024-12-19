@@ -11,6 +11,8 @@ def save_map():
     for line in file:
         map.append([int(x) for x in line.strip()])
 
+    file.close()
+
     n = len(map)
     m = len(map[0])
 
