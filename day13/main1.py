@@ -1,5 +1,7 @@
 import re
-from sympy import symbols, Eq, solve
+import math 
+
+inf = math.inf
 
 def process_input():
     total = 0
@@ -24,22 +26,18 @@ def process_input():
     return total
 
 def minimize_solver(buttonA_x, buttonA_y, buttonB_x, buttonB_y, end_x, end_y):
-    # This solver doesnt minimize, only solves the linear equations. I dont know why it works 
+    res = inf
 
-    # Define symbolic variables
-    a, b = symbols('a b', integer=True)
-
-    # Define the equations
-    eq1 = Eq(a * buttonA_x + b * buttonB_x, end_x)
-    eq2 = Eq(a * buttonA_y + b * buttonB_y, end_y)
-
-    # Solve the system of equations
-    solution = solve([eq1, eq2], (a, b))
-
-    if len(solution) > 0: 
-        return solution[a]*3 + solution[b]
-    else:   # Not possible solution
+    # Brute force solution
+    for a in range(1, 100):  
+        for b in range(1, 100):
+            if buttonA_x * a + buttonB_x * b == end_x and buttonA_y * a + buttonB_y * b == end_y:
+                res = min(res, 3*a +b)
+    
+    if res == inf: 
         return 0
+    else: 
+        return res
 
 def main():
     total = process_input()
